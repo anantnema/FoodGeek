@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/ayushoriginal/FoodGeek/issues"
   },
-  "homepage": "https://github.com/ayushoriginal/FoodGeek#readme"
+  "homepage": "https://github.com/ayushoriginal/FoodGeek#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
 }
