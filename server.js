@@ -16,6 +16,11 @@ app.post('/recipe-add', (req, res) => {
 	res.send('successful!');
 });
 
+app.post('/register', (req, res) => {
+	console.log('got a post req for new account!\n', req.body);
+	res.send('successful!');
+});
+
 app.listen(3000, function () {
   console.log('Food Geek server listening on port 3000!');
 });
