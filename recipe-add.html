@@ -180,8 +180,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script>
 	$('#addRecipeForm').submit((event) => {
 		event.preventDefault();
-		const $form = $('#addRecipeForm');
-		const url = $form.attr("action");
 		const data = {
 			name: $('input#firstname').val(),
 			category: $('input#category').val(),
