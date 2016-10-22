@@ -12,7 +12,7 @@ app.get('/', function (req, res) {
 });
 
 app.post('/recipe-add', (req, res) => {
-	console.log('got a post req!', req.body);
+	console.log('got a post req!\n', req.body);
 	res.send('successful!');
 });
 
