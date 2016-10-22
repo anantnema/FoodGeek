@@ -77,11 +77,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				    </div>
 
 					<!-- search-scripts -->
-					<script src="js/classie.js"></script>
+<!-- 					<script src="js/classie.js"></script>
 					<script src="js/uisearch.js"></script>
 						<script>
 							new UISearch( document.getElementById( 'sb-search' ) );
-						</script>
+						</script> -->
 				<!-- //search-scripts -->
 				<div class="header-right">
 						<div class="cart box_1">
@@ -109,22 +109,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <h1 class="header-agileits w3layouts w3 w3l agileinfo" style="margin-top: 60px;margin-bottom: 60px">Add Recipe</h1>
 <div class="content-w3ls">
-	<form action="/recipe-add" method="post" id="addRecipeForm">
+	<form action="/recipe-add" id="addRecipeForm">
 		<div class="form-wthree1 wthree w3-agileits agileits-w3layouts agile w3-agile">		
 			
 			<div class="form-control"> 
 				<label class="header">Menu Item name <span>:</span></label>
-				<input type="text" id="firstname" name="firstname" placeholder="" title="Please enter Item Name" required="">
+				<input type="text" id="firstname" name="firstname" placeholder="" title="Please enter Item Name" >
 			</div>
 			
 			<div class="form-control"> 
 				<label class="header">Category<span>:</span></label>
-				<input type="text" id="middlename" name="middlename" placeholder="Category" title="Please enter Category" required="">
+				<input type="text" id="middlename" name="middlename" placeholder="Category" title="Please enter Category" >
 			</div>
 			
 			<div class="form-control"> 
 				<label class="header">Restaurant<span>:</span></label>
-				<input type="text" id="state" name="state" placeholder="" title="Please enter Restaurant" required="">
+				<input type="text" id="state" name="state" placeholder="" title="Please enter Restaurant" >
 			</div>
 		
 		</div>
@@ -149,7 +149,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			
 			<div class="form-control">	
 				<label class="header">Email Address <span>:</span></label>
-				<input type="email" id="email" name="email" placeholder="Mail@example.com" title="Please enter a Valid Email Address" required="">
+				<input type="email" id="email" name="email" placeholder="Mail@example.com" title="Please enter a Valid Email Address">
 			</div>
 			
 			<div class="form-control">
@@ -164,13 +164,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 		</div>
 		<div class="clear"></div>
-		<div class="form-control">
+		<div class="">
 			<label class="enquiry">Review <span>:</span></label>
 			<textarea id="message" name="message" placeholder="Describe your experience here..." title="Please enter Your review"></textarea>
 			<div class="clear"></div>
 		</div>
-		<div class="form-control last">
-			<input type="submit" class="register" value="Submit">
+		<div class=" last">
+			<input type="submit" class="" value="Submit">
 			<input type="reset" class="reset" value="Reset">
 			<div class="clear"></div>
 		</div>	
@@ -178,12 +178,26 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </div>
 
 <script>
-	$('addRecipeForm').submit((event) => {
+	$('#addRecipeForm').submit((event) => {
 		event.preventDefault();
-		$.post({type: "test"})
-		.done((res) =>{
+		console.log("this: ", this);
+		const $form = $('#addRecipeForm');
+		const url = $form.attr("action");
+		console.log(url);
+		$.ajax({
+			type: 'POST',
+            url: '/recipe-add',
+            data: {
+            	type1: "testRate!",
+            	type2: [1, 2, 3, 4]
+            }
+        })
+		.done((res) => {
 			console.log(res);
-		});
+		})
+        .fail((err) => {
+            console.log('failed to submit!', err);
+        });
 	});
 </script>
 </body>
