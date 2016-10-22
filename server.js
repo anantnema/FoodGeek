@@ -1,5 +1,9 @@
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
+
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 app.use('/', express.static(__dirname + '/'));
 
@@ -8,7 +12,7 @@ app.get('/', function (req, res) {
 });
 
 app.post('/recipe-add', (req, res) => {
-	console.log('got a post req!', req);
+	console.log('got a post req!', req.body);
 	res.send('successful!');
 });
 
