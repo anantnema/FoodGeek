@@ -21,6 +21,17 @@ const insert = (db, callback, collection, document) => {
 	});
 };
 
+
+	const login = (db, callback, account) => {
+		const cursor = db.collection('accounts')
+		.find(account);
+	   cursor.each((err, doc) => {
+	      assert.equal(err, null);
+	      if(doc != null)
+		      callback(doc);
+	   });
+	};
+
 app.use('/', express.static(__dirname + '/'));
 
 app.get('/', function (req, res) {
@@ -50,8 +61,18 @@ app.post('/register', (req, res) => {
 });
 
 app.post('/login', (req, res) => {
+
+	MongoClient.connect(url, (err, db) => {
+	  assert.equal(null, err);
+	  login(db, (doc) => {
+	  	console.log('doc:',doc);
+	  	res.send(doc);
+	  	db.close();
+	  }, req.body);
+	});
+
 	console.log('got a post req for login!\n', req.body);
-	res.send('successful!');
+	
 });
 
 app.listen(3000, function () {

@@ -153,7 +153,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						 <ul>
 							 <li class="text-info">Last Name: </li>
 							 <li><input id="last-name" type="text" value=""></li>
-						 </ul>				 
+						 </ul>	
+						<ul>
+							 <li class="text-info">Username: </li>
+							 <li><input id="username" type="text" value=""></li>
+						 </ul>			 
 						<ul>
 							 <li class="text-info">Email: </li>
 							 <li><input id="email" type="text" value=""></li>
@@ -179,6 +183,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							const data = {
 								first_name: $('input#first-name').val(),
 								last_name: $('input#last-name').val(),
+								username: $('input#username').val(),
 								email: $('input#email').val(),
 								password: $('input#password').val(),
 								mobile_number: $('input#mobile-number').val(),
